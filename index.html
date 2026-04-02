@@ -1,353 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Toddler’s Twist | Kids Books</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* GLOBAL */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #fff1f7, #e8f3ff, #fff7e6);
-      color: #333;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toddler’s Twist | Kids Books</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    /* FLOATING SHAPES */
-    .shape {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.25;
-      animation: float 8s infinite ease-in-out;
-      z-index: 0;
-    }
-    .shape1 { width: 120px; height: 120px; background: #ffb3d9; top: 10%; left: 5%; }
-    .shape2 { width: 180px; height: 180px; background: #a3d4ff; top: 60%; right: 10%; animation-delay: 2s; }
-    .shape3 { width: 90px; height: 90px; background: #ffd59e; top: 30%; right: 30%; animation-delay: 4s; }
+<style>
+/* GLOBAL */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #fff1f7, #e8f3ff, #fff7e6);
+    color: #333;
+    overflow-x: hidden;
+}
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-25px); }
-      100% { transform: translateY(0); }
-    }
+/* FLOATING SHAPES */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation: float 8s infinite ease-in-out;
+    z-index: 0;
+}
+.shape1 { width: 120px; height: 120px; background: #ffb3d9; top: 10%; left: 5%; }
+.shape2 { width: 180px; height: 180px; background: #a3d4ff; top: 60%; right: 10%; animation-delay: 2s; }
+.shape3 { width: 90px; height: 90px; background: #ffd59e; top: 30%; right: 30%; animation-delay: 4s; }
 
-    /* HEADER / HERO */
-    header {
-      text-align: center;
-      padding: 70px 20px 40px;
-      position: relative;
-      z-index: 1;
-    }
-    .logo {
-      font-size: 42px;
-      font-weight: 700;
-      color: #ff4f7b;
-      margin-bottom: 8px;
-    }
-    .tagline {
-      font-size: 18px;
-      color: #555;
-    }
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(0); }
+}
 
-    /* CONTROLS */
-    .controls {
-      text-align: center;
-      margin: 20px 0 10px;
-      position: relative;
-      z-index: 1;
-    }
-    .search-bar {
-      width: 80%;
-      max-width: 420px;
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 2px solid #ff7eb3;
-      outline: none;
-      font-size: 15px;
-      background: #fff;
-    }
-    .filters {
-      margin-top: 12px;
-    }
-    .filter-btn {
-      padding: 7px 14px;
-      margin: 4px;
-      border-radius: 20px;
-      border: none;
-      background: #ff9ac2;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-      font-size: 12px;
-    }
-    .filter-btn:hover {
-      background: #ff4f7b;
-    }
+/* HEADER */
+header {
+    text-align: center;
+    padding: 70px 20px 40px;
+    position: relative;
+    z-index: 1;
+}
+.logo {
+    font-size: 42px;
+    font-weight: 700;
+    color: #ff4f7b;
+}
+.tagline {
+    font-size: 18px;
+    color: #555;
+}
 
-    /* BOOK GRID */
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 30px auto 50px;
-      position: relative;
-      z-index: 1;
-    }
-    .book-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-    .book-card {
-      background: #fff;
-      padding: 18px;
-      border-radius: 20px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      transition: 0.3s;
-      text-align: center;
-      border: 4px solid transparent;
-      background-image: linear-gradient(#fff, #fff),
-        linear-gradient(135deg, #ffb3d9, #a3d4ff, #ffd59e);
-      background-origin: border-box;
-      background-clip: content-box, border-box;
-    }
-    .book-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-    }
-    .book-cover {
-      width: 100%;
-      height: 200px;
-      border-radius: 14px;
-      margin-bottom: 12px;
-      background-size: cover;
-      background-position: center;
-      background-color: #ffe6f0;
-    }
-    .book-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #ff4f7b;
-    }
-    .book-card p {
-      font-size: 14px;
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-    .price {
-      font-weight: 600;
-      margin: 6px 0 10px;
-      color: #444;
-      font-size: 15px;
-    }
-    .buy-btn {
-      display: inline-block;
-      padding: 9px 14px;
-      background: linear-gradient(135deg, #ff7eb3, #ff4f7b);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      transition: 0.3s;
-      box-shadow: 0 4px 10px rgba(255, 79, 123, 0.4);
-    }
-    .buy-btn:hover {
-      background: linear-gradient(135deg, #ff4f7b, #ff2f6a);
-      transform: scale(1.05);
-    }
+/* SEARCH + FILTERS */
+.controls { text-align: center; margin: 20px 0 10px; }
+.search-bar {
+    width: 80%;
+    max-width: 420px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid #ff7eb3;
+    outline: none;
+    font-size: 15px;
+    background: #fff;
+}
+.filters { margin-top: 12px; }
+.filter-btn {
+    padding: 7px 14px;
+    margin: 4px;
+    border-radius: 20px;
+    border: none;
+    background: #ff9ac2;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 12px;
+}
+.filter-btn:hover { background: #ff4f7b; }
 
-    /* RESPONSIVE */
-    @media (max-width: 600px) {
-      .logo { font-size: 32px; }
-      .tagline { font-size: 16px; }
-      .book-cover { height: 180px; }
-    }
-  </style>
+/* BOOK GRID */
+.container { width: 90%; max-width: 1200px; margin: 30px auto 50px; }
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+.book-card {
+    background: #fff;
+    padding: 18px;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transition: 0.3s;
+    text-align: center;
+    border: 4px solid transparent;
+    background-image: linear-gradient(#fff, #fff),
+                      linear-gradient(135deg, #ffb3d9, #a3d4ff, #ffd59e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+.book-cover {
+    width: 100%;
+    height: 200px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    background-size: cover;
+    background-position: center;
+    background-color: #ffe6f0;
+}
+.book-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #ff4f7b;
+}
+.book-card p { font-size: 14px; margin-bottom: 8px; }
+.price { font-weight: 600; margin: 6px 0 10px; color: #444; font-size: 15px; }
+.buy-btn {
+    display: inline-block;
+    padding: 9px 14px;
+    background: linear-gradient(135deg, #ff7eb3, #ff4f7b);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(255,79,123,0.4);
+}
+.buy-btn:hover {
+    background: linear-gradient(135deg, #ff4f7b, #ff2f6a);
+    transform: scale(1.05);
+}
+</style>
 </head>
-<body>
-  <!-- FLOATING SHAPES -->
-  <div class="shape shape1"></div>
-  <div class="shape shape2"></div>
-  <div class="shape shape3"></div>
 
-  <header>
+<body>
+
+<!-- FLOATING SHAPES -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<header>
     <div class="logo">Toddler’s Twist</div>
     <div class="tagline">Colorful • Fun • Educational Books for Little Learners</div>
-  </header>
+</header>
 
-  <!-- SEARCH + FILTERS -->
-  <div class="controls">
-    <input
-      type="text"
-      id="search"
-      class="search-bar"
-      placeholder="Search books by title..."
-    />
+<!-- SEARCH + FILTERS -->
+<div class="controls">
+    <input type="text" id="search" class="search-bar" placeholder="Search books by title...">
     <div class="filters">
-      <button class="filter-btn" onclick="filterBooks('all')">All</button>
-      <button class="filter-btn" onclick="filterBooks('alphabet')">Alphabet</button>
-      <button class="filter-btn" onclick="filterBooks('twisters')">Tongue Twisters</button>
-      <button class="filter-btn" onclick="filterBooks('classic')">Classics</button>
-      <button class="filter-btn" onclick="filterBooks('activity')">Activity / Look & Find</button>
-      <button class="filter-btn" onclick="filterBooks('ocean')">Ocean / Nature</button>
+        <button class="filter-btn" onclick="filterBooks('all')">All</button>
+        <button class="filter-btn" onclick="filterBooks('alphabet')">Alphabet</button>
+        <button class="filter-btn" onclick="filterBooks('twisters')">Tongue Twisters</button>
+        <button class="filter-btn" onclick="filterBooks('classic')">Classics</button>
+        <button class="filter-btn" onclick="filterBooks('activity')">Activity</button>
+        <button class="filter-btn" onclick="filterBooks('ai')">AI</button>
     </div>
-  </div>
+</div>
 
-  <div class="container">
+<div class="container">
     <div class="book-grid" id="bookGrid">
-      <!-- 1. Emily’s Book of Twisty Words! -->
-      <div class="book-card" data-category="twisters">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Twisty+Words');"
-        ></div>
-        <div class="book-title">Emily’s Book of Twisty Words!</div>
-        <p>Silly, fun, and original tongue twisters for kids that build confidence and pronunciation.</p>
-        <div class="price">$9.99</div>
-        <a class="buy-btn" href="https://www.amazon.com/dp/B0G5J9YDX4" target="_blank">Buy on Amazon</a>
-      </div>
 
-      <!-- 2. Twisty Alphabet Tales -->
-      <div class="book-card" data-category="alphabet">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Alphabet+Tales');"
-        ></div>
-        <div class="book-title">Twisty Alphabet Tales</div>
-        <p>A vibrant A–Z adventure with rhymes and playful illustrations to make letters unforgettable.</p>
-        <div class="price">$12.99</div>
-        <a class="buy-btn" href="https://www.walmart.com/ip/Twisty-Alphabet-tales-Paperback-9798882763182/5335895466" target="_blank">Buy on Walmart</a>
-      </div>
+        <!-- 1 Magical Matches -->
+        <div class="book-card" data-category="twisters">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Magical+Matches');"></div>
+            <div class="book-title">Magical Matches</div>
+            <p>A fun, imaginative book full of colorful surprises.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/0gwHGa0r" target="_blank">Buy on Amazon</a>
+        </div>
 
-      <!-- 3. Oliver Twist (Retold for Little Children) -->
-      <div class="book-card" data-category="classic">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=Oliver+Twist+Retold');"
-        ></div>
-        <div class="book-title">Oliver Twist (Retold for Little Children)</div>
-        <p>A gentle, beautifully illustrated retelling of the classic story, perfect for young readers.</p>
-        <div class="price">$14.50</div>
-        <a class="buy-btn" href="https://bookshop.org/p/books/oliver-twist-retold-for-little-children-a-gentle-illustrated-introduction-to-charles-dickens-phiz-art-press/1e2fff93abc73375?ean=9798248146697" target="_blank">Buy on Bookshop</a>
-      </div>
+        <!-- 2 How Crocodiles Care for Their Offspring -->
+        <div class="book-card" data-category="nature">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Crocodiles');"></div>
+            <div class="book-title">How Crocodiles Care for Their Offspring</div>
+            <p>A gentle introduction to animal parenting for kids.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/0bfVHkHE" target="_blank">Buy on Amazon</a>
+        </div>
 
-      <!-- 4. PAW Patrol: My First Look & Find -->
-      <div class="book-card" data-category="activity">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=PAW+Patrol+Look+%26+Find');"
-        ></div>
-        <div class="book-title">PAW Patrol: My First Look & Find</div>
-        <p>Interactive board book with search‑and‑find scenes featuring favorite PAW Patrol characters.</p>
-        <div class="price">$4.99</div>
-        <a class="buy-btn" href="https://www.target.com/p/little-my-first-look-and-find-paw-patrol-board-book/-/A-79142272" target="_blank">Buy on Target</a>
-      </div>
+        <!-- 3 At Home with Energy -->
+        <div class="book-card" data-category="education">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=Energy');"></div>
+            <div class="book-title">At Home with Energy</div>
+            <p>Teaches kids about energy, power, and home safety.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/00d5FW2N" target="_blank">Buy on Amazon</a>
+        </div>
 
-      <!-- 5. Cozy Classics: Oliver Twist -->
-      <div class="book-card" data-category="classic">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Cozy+Classics');"
-        ></div>
-        <div class="book-title">Cozy Classics: Oliver Twist</div>
-        <p>The classic story retold with charming needle‑felted scenes and simple text for little ones.</p>
-        <div class="price">$10.99</div>
-        <a class="buy-btn" href="https://www.thriftbooks.com/w/the-cozy-classics-oliver-twist_jack-wang_holman-wang/3237180/item/43264800/" target="_blank">Buy on ThriftBooks</a>
-      </div>
+        <!-- 4 Unlocking Imaginations -->
+        <div class="book-card" data-category="education">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Unlocking+Imaginations');"></div>
+            <div class="book-title">Unlocking Imaginations</div>
+            <p>Grammar, vocabulary, and math made fun for kids.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/07KaN91M" target="_blank">Buy on Amazon</a>
+        </div>
 
-      <!-- 6. The Twisty Tot’s Tome of Tongue Twisters -->
-      <div class="book-card" data-category="twisters">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=Twisty+Tot+Twisters');"
-        ></div>
-        <div class="book-title">The Twisty Tot’s Tome of Tongue Twisters</div>
-        <p>A fun collection of tricky tongue twisters that challenge kids and spark giggles.</p>
-        <div class="price">$3.99</div>
-        <a class="buy-btn" href="https://www.amazon.com/dp/B0GLG7LG9Q" target="_blank">Buy on Amazon</a>
-      </div>
+        <!-- 5 Preschool Alphabet Workbook -->
+        <div class="book-card" data-category="alphabet">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Alphabet+Workbook');"></div>
+            <div class="book-title">Preschool Alphabet Workbook</div>
+            <p>A colorful A–Z learning workbook for preschoolers.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/099Wl2AF" target="_blank">Buy on Amazon</a>
+        </div>
 
-      <!-- 7. Twinkle Twinkle Little Twister -->
-      <div class="book-card" data-category="twisters">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Little+Twister');"
-        ></div>
-        <div class="book-title">Twinkle Twinkle Little Twister</div>
-        <p>A tornado‑themed adventure with fun storytelling and imaginative illustrations.</p>
-        <div class="price">$14.95</div>
-        <a class="buy-btn" href="https://www.amazon.com/dp/1571684476" target="_blank">Buy on Amazon</a>
-      </div>
+        <!-- 6 Toddlers Twist Fun Zone -->
+        <div class="book-card" data-category="activity">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=Fun+Zone');"></div>
+            <div class="book-title">Toddlers Twist Fun Zone</div>
+            <p>A playful activity book full of fun challenges.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/0206hrYA" target="_blank">Buy on Amazon</a>
+        </div>
 
-      <!-- 8. Peek‑A‑Flap Ocean -->
-      <div class="book-card" data-category="ocean">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Ocean+Adventure');"
-        ></div>
-        <div class="book-title">Peek‑A‑Flap Ocean</div>
-        <p>Lift‑the‑flap ocean adventure that introduces toddlers to sea creatures and habitats.</p>
-        <div class="price">$9.05</div>
-        <a class="buy-btn" href="https://www.amazon.com/Peek-Flap-Ocean-Cottage-Press/dp/164638668X" target="_blank">Buy on Amazon</a>
-      </div>
+        <!-- 7 The Little Bear Who Shared -->
+        <div class="book-card" data-category="story">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Little+Bear');"></div>
+            <div class="book-title">The Little Bear Who Shared</div>
+            <p>A heartwarming story about kindness and sharing.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/0dujx3G0" target="_blank">Buy on Amazon</a>
+        </div>
 
-      <!-- 9. Oliver Twist (Children’s Classics) -->
-      <div class="book-card" data-category="classic">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=Children%27s+Classic');"
-        ></div>
-        <div class="book-title">Oliver Twist (Children’s Classics)</div>
-        <p>A hardbound, illustrated edition of the classic tale, adapted for young readers.</p>
-        <div class="price">$7.77</div>
-        <a class="buy-btn" href="https://www.amazon.com/dp/1906068445" target="_blank">Buy on Amazon</a>
-      </div>
+        <!-- 8 Learning Loops -->
+        <div class="book-card" data-category="education">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Learning+Loops');"></div>
+            <div class="book-title">Learning Loops</div>
+            <p>A fun introduction to patterns and early logic.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/0eWaAVml" target="_blank">Buy on Amazon</a>
+        </div>
 
-      <!-- 10. My Little Book of Tongue Twisters (Part A) -->
-      <div class="book-card" data-category="twisters">
-        <div
-          class="book-cover"
-          style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Tongue+Twisters+Part+A');"
-        ></div>
-        <div class="book-title">My Little Book of Tongue Twisters (Part A)</div>
-        <p>Fun, silly tongue twisters with colorful illustrations to practice sounds and rhythm.</p>
-        <div class="price">$5.99</div>
-        <a class="buy-btn" href="https://www.amazon.com/dp/B0DZT26K21" target="_blank">Buy on Amazon</a>
-      </div>
+        <!-- 9 How AI Works -->
+        <div class="book-card" data-category="ai">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=AI+for+Kids');"></div>
+            <div class="book-title">How AI Works</div>
+            <p>A simple, fun guide introducing kids to AI concepts.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/01s0T9C1" target="_blank">Buy on Amazon</a>
+        </div>
+
+        <!-- 10 The Time Travelling Lab Coats -->
+        <div class="book-card" data-category="story">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Lab+Coats');"></div>
+            <div class="book-title">The Time Travelling Lab Coats</div>
+            <p>A thrilling science adventure for curious young minds.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://a.co/d/0dzRQzVT" target="_blank">Buy on Amazon</a>
+        </div>
+
     </div>
-  </div>
+</div>
 
-  <script>
-    // SEARCH
-    document.getElementById("search").addEventListener("keyup", function () {
-      const value = this.value.toLowerCase();
-      const books = document.querySelectorAll(".book-card");
-      books.forEach((book) => {
+<script>
+// SEARCH
+document.getElementById("search").addEventListener("keyup", function () {
+    const value = this.value.toLowerCase();
+    const books = document.querySelectorAll(".book-card");
+    books.forEach((book) => {
         const title = book.querySelector(".book-title").innerText.toLowerCase();
         book.style.display = title.includes(value) ? "block" : "none";
-      });
     });
+});
 
-    // FILTER
-    function filterBooks(category) {
-      const books = document.querySelectorAll(".book-card");
-      books.forEach((book) => {
+// FILTER
+function filterBooks(category) {
+    const books = document.querySelectorAll(".book-card");
+    books.forEach((book) => {
         if (category === "all" || book.dataset.category === category) {
-          book.style.display = "block";
+            book.style.display = "block";
         } else {
-          book.style.display = "none";
+            book.style.display = "none";
         }
-      });
-      document.getElementById("search").value = "";
-    }
-  </script>
+    });
+    document.getElementById("search").value = "";
+}
+</script>
+
 </body>
 </html>
