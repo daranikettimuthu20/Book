@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toddler’s Twist | Kids Books</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* GLOBAL */
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #fff1f7, #e8f3ff, #fff7e6);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* FLOATING SHAPES */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation: float 8s infinite ease-in-out;
+}
+
+.shape1 { width: 120px; height: 120px; background: #ffb3d9; top: 10%; left: 5%; }
+.shape2 { width: 180px; height: 180px; background: #a3d4ff; top: 60%; right: 10%; animation-delay: 2s; }
+.shape3 { width: 90px; height: 90px; background: #ffd59e; top: 30%; right: 30%; animation-delay: 4s; }
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(0px); }
+}
+
+/* HEADER / HERO */
+header {
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ff4f7b;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 20px;
+    color: #555;
+}
+
+/* SEARCH + FILTERS */
+.controls {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.search-bar {
+    width: 70%;
+    max-width: 400px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid #ff7eb3;
+    outline: none;
+    font-size: 16px;
+}
+
+.filters {
+    margin-top: 15px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 20px;
+    border: none;
+    background: #ff9ac2;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+.filter-btn:hover {
+    background: #ff4f7b;
+}
+
+/* BOOK GRID */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto 60px;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.book-card {
+    background: white;
+    padding: 20px;
+    border-radius: 22px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transition: 0.3s;
+    text-align: center;
+    border: 4px solid transparent;
+    background-image: linear-gradient(white, white),
+                      linear-gradient(135deg, #ffb3d9, #a3d4ff, #ffd59e);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+.book-cover {
+    width: 100%;
+    height: 200px;
+    background: #ffe6f0;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    background-size: cover;
+    background-position: center;
+}
+
+.book-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ff4f7b;
+}
+
+.price {
+    font-weight: 600;
+    margin: 10px 0;
+    color: #444;
+    font-size: 16px;
+}
+
+.buy-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #ff7eb3, #ff4f7b);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(255, 79, 123, 0.4);
+}
+
+.buy-btn:hover {
+    background: linear-gradient(135deg, #ff4f7b, #ff2f6a);
+    transform: scale(1.07);
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING SHAPES -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<header>
+    <div class="logo">Toddler’s Twist</div>
+    <div class="tagline">Colorful • Fun • Educational Books for Little Learners</div>
+</header>
+
+<!-- SEARCH + FILTERS -->
+<div class="controls">
+    <input type="text" id="search" class="search-bar" placeholder="Search books by title...">
+
+    <div class="filters">
+        <button class="filter-btn" onclick="filterBooks('all')">All</button>
+        <button class="filter-btn" onclick="filterBooks('alphabet')">Alphabet</button>
+        <button class="filter-btn" onclick="filterBooks('twisters')">Tongue Twisters</button>
+        <button class="filter-btn" onclick="filterBooks('classic')">Classics</button>
+        <button class="filter-btn" onclick="filterBooks('activity')">Activity / Look & Find</button>
+        <button class="filter-btn" onclick="filterBooks('ocean')">Ocean / Nature</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="book-grid" id="bookGrid">
+
+        <!-- 1. Emily’s Book of Twisty Words! -->
+        <div class="book-card" data-category="twisters">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Twisty+Words');"></div>
+            <div class="book-title">Emily’s Book of Twisty Words!</div>
+            <p>Silly, fun, and original tongue twisters for kids that build confidence and pronunciation.</p>
+            <div class="price">$9.99</div>
+            <a class="buy-btn" href="https://www.amazon.com/dp/B0G5J9YDX4" target="_blank">Buy on Amazon</a>
+        </div>
+
+        <!-- 2. Twisty Alphabet Tales -->
+        <div class="book-card" data-category="alphabet">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Alphabet+Tales');"></div>
+            <div class="book-title">Twisty Alphabet Tales</div>
+            <p>A vibrant A–Z adventure with rhymes and playful illustrations to make letters unforgettable.</p>
+            <div class="price">$12.99</div>
+            <a class="buy-btn" href="https://www.walmart.com/ip/Twisty-Alphabet-tales-Paperback-9798882763182/5335895466" target="_blank">Buy on Walmart</a>
+        </div>
+
+        <!-- 3. Oliver Twist (Retold for Little Children) -->
+        <div class="book-card" data-category="classic">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=Oliver+Twist+Retold');"></div>
+            <div class="book-title">Oliver Twist (Retold for Little Children)</div>
+            <p>A gentle, beautifully illustrated retelling of the classic story, perfect for young readers.</p>
+            <div class="price">$14.50</div>
+            <a class="buy-btn" href="https://bookshop.org/p/books/oliver-twist-retold-for-little-children-a-gentle-illustrated-introduction-to-charles-dickens-phiz-art-press/1e2fff93abc73375?ean=9798248146697" target="_blank">Buy on Bookshop</a>
+        </div>
+
+        <!-- 4. PAW Patrol: My First Look & Find -->
+        <div class="book-card" data-category="activity">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=PAW+Patrol+Look+%26+Find');"></div>
+            <div class="book-title">PAW Patrol: My First Look & Find</div>
+            <p>Interactive board book with search‑and‑find scenes featuring favorite PAW Patrol characters.</p>
+            <div class="price">$4.99</div>
+            <a class="buy-btn" href="https://www.target.com/p/little-my-first-look-and-find-paw-patrol-board-book/-/A-79142272" target="_blank">Buy on Target</a>
+        </div>
+
+        <!-- 5. Cozy Classics: Oliver Twist -->
+        <div class="book-card" data-category="classic">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Cozy+Classics');"></div>
+            <div class="book-title">Cozy Classics: Oliver Twist</div>
+            <p>The classic story retold with charming needle‑felted scenes and simple text for little ones.</p>
+            <div class="price">$10.99</div>
+            <a class="buy-btn" href="https://www.thriftbooks.com/w/the-cozy-classics-oliver-twist_jack-wang_holman-wang/3237180/item/43264800/" target="_blank">Buy on ThriftBooks</a>
+        </div>
+
+        <!-- 6. The Twisty Tot’s Tome of Tongue Twisters -->
+        <div class="book-card" data-category="twisters">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=Twisty+Tot+Twisters');"></div>
+            <div class="book-title">The Twisty Tot’s Tome of Tongue Twisters</div>
+            <p>A fun collection of tricky tongue twisters that challenge kids and spark giggles.</p>
+            <div class="price">$3.99</div>
+            <a class="buy-btn" href="https://www.amazon.com/dp/B0GLG7LG9Q" target="_blank">Buy on Amazon</a>
+        </div>
+
+        <!-- 7. Twinkle Twinkle Little Twister -->
+        <div class="book-card" data-category="twisters">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Little+Twister');"></div>
+            <div class="book-title">Twinkle Twinkle Little Twister</div>
+            <p>A tornado‑themed adventure with fun storytelling and imaginative illustrations.</p>
+            <div class="price">$14.95</div>
+            <a class="buy-btn" href="https://www.amazon.com/dp/1571684476" target="_blank">Buy on Amazon</a>
+        </div>
+
+        <!-- 8. Peek‑A‑Flap Ocean -->
+        <div class="book-card" data-category="ocean">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/a3d4ff/ffffff?text=Ocean+Adventure');"></div>
+            <div class="book-title">Peek‑A‑Flap Ocean</div>
+            <p>Lift‑the‑flap ocean adventure that introduces toddlers to sea creatures and habitats.</p>
+            <div class="price">$9.05</div>
+            <a class="buy-btn" href="https://www.amazon.com/Peek-Flap-Ocean-Cottage-Press/dp/164638668X" target="_blank">Buy on Amazon</a>
+        </div>
+
+        <!-- 9. Oliver Twist (Children’s Classics) -->
+        <div class="book-card" data-category="classic">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffd59e/ffffff?text=Children%27s+Classic');"></div>
+            <div class="book-title">Oliver Twist (Children’s Classics)</div>
+            <p>A hardbound, illustrated edition of the classic tale, adapted for young readers.</p>
+            <div class="price">$7.77</div>
+            <a class="buy-btn" href="https://www.amazon.com/dp/1906068445" target="_blank">Buy on Amazon</a>
+        </div>
+
+        <!-- 10. My Little Book of Tongue Twisters (Part A) -->
+        <div class="book-card" data-category="twisters">
+            <div class="book-cover" style="background-image:url('https://via.placeholder.com/300x400/ffb3d9/ffffff?text=Tongue+Twisters+Part+A');"></div>
+            <div class="book-title">My Little Book of Tongue Twisters (Part A)</div>
+            <p>Fun, silly tongue twisters with colorful illustrations to practice sounds and rhythm.</p>
+            <div class="price">$5.99</div>
+            <a class="buy-btn" href="https://www.amazon.com/dp/B0DZT26K21" target="_blank">Buy on Amazon</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+/* SEARCH FUNCTION */
+document.getElementById("search").addEventListener("keyup", function() {
+    let value = this.value.toLowerCase();
+    let books = document.querySelectorAll(".book-card");
+
+    books.forEach(book => {
+        let title = book.querySelector(".book-title").innerText.toLowerCase();
+        book.style.display = title.includes(value) ? "block" : "none";
+    });
+});
+
+/* FILTER FUNCTION */
+function filterBooks(category) {
+    let books = document.querySelectorAll(".book-card");
+
+    books.forEach(book => {
+        if (category === "all" || book.dataset.category === category) {
+            book.style.display = "block";
+        } else {
+            book.style.display = "none";
+        }
+    });
+
+    // Clear search when filter is used
+    document.getElementById("search").value = "";
+}
+</script>
+
+</body>
+</html>
